@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    
+    <li class="nav-item">
+      <a class="nav-link" href="/staff_P">
+        <span class="menu-title">Faculty Leaves</span>
+        <i class="icon-globe menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/staff_hod">
+        <span class="menu-title">HOD Leaves</span>
+        <i class="icon-globe menu-icon"></i>
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+             <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Faculty Full Leaves</h4>
+                    <form method="get" >
+                      <div class="row">
+                        <div class="col-2">
+                          {{ filter.form.dept |as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                          {{ filter.form.designation |as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                          {{ filter.form.From_date |as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                          {{ filter.form.To_date |as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                          {{ filter.form.Hod_approval |as_crispy_field }}
+                        </div>
+                        <div class="col-2">
+                        <button type="submit" class="btn btn-sm btn-success" style="width: 6rem; height: 3rem; margin-top: 1.5rem;">Search</button>
+                      </div>
+                    </div>
+                  </form>
+                    <table class="table table-striped">
+                      <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Staff ID</th>
+                        <th scope="col">Leave Type</th>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">HOD Approval Status</th>
+                        <th scope="col">Approval Status</th>
+                        <th scope="col">Update</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for t in tle %}
+                    {% if t.whether_HOD == False %}
+                          <tr>
+                            <td>{{ t.name }}</td>
+                            <td>{{ t.designation }}</td>
+                            <td>{{ t.dept }}</td>
+                            <td>{{ t.user }}</td>
+                            <td>{{ t.Leave_type }}</td>
+                            <td>{{ t.From_date }}</td>
+                            <td>{{ t.To_date }}</td>
+                            <td>{{ t.Hod_approval }}</td>
+                            <td>{{ t.Principal_approval }}</td>
+                            <td><a class="btn btn-success" href="{% url 'staff_edit_P' t.id %}">Edit</a></td>
+                          </tr>
+                        {% endif %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+                <div class="card" style="width: 15rem;">
+                  <div class="card-body">
+                      <h5 class="card-title justify-content-center"> Faculty Leaves : <b>{{ tlecount }}</b></h5>
+                  </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Faculty Half Leaves</h4>
+                <form method="get" >
+                  <div class="row">
+                    <div class="col-2">
+                      {{ filterhalf.form.dept |as_crispy_field }}
+                    </div>
+                    <div class="col-2">
+                      {{ filterhalf.form.designation |as_crispy_field }}
+                    </div>
+                    <div class="col-2">
+                      {{ filterhalf.form.From_date |as_crispy_field }}
+                    </div>
+                    <div class="col-2">
+                      {{ filterhalf.form.To_date |as_crispy_field }}
+                    </div>
+                    <div class="col-2">
+                      {{ filterhalf.form.Hod_approval |as_crispy_field }}
+                    </div>
+                    <div class="col-2">
+                    <button type="submit" class="btn btn-sm btn-success" style="width: 6rem; height: 3rem; margin-top: 1.5rem;">Search</button>
+                  </div>
+                </div>
+              </form>
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">HOD Approval Status</th>
+                    <th scope="col">Approval Status</th>
+                    <th scope="col">Update</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for t in ole %}
+                {% if t.whether_HOD == False %}
+                      <tr>
+                        <td>{{ t.name }}</td>
+                        <td>{{ t.designation }}</td>
+                        <td>{{ t.dept }}</td> 
+                        <td>{{ t.user }}</td>
+                        <td>{{ t.From_date }}</td>
+                        <td>{{ t.To_date }}</td>
+                        <td>{{ t.Time }}</td>
+                        <td>{{ t.Hod_approval }}</td>
+                        <td>{{ t.Principal_approval }}</td>
+                        <td><a class="btn btn-success" href="{% url 'staff_edit_P_half' t.id %}">Edit</a></td>
+                      </tr>
+                    {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="card" style="width: 15rem;">
+              <div class="card-body">
+                  <h5 class="card-title justify-content-center"> Faculty Leaves : <b>{{ hlecount }}</b></h5>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+        <div style="float: right;"><a href="{% url 'leave_pdf' %}" class="btn btn-lg btn-dark">Download PDF</a></div>
+    </div>
+  </div>
+</div>
+    
+{% endblock content %}

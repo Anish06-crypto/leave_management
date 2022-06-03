@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Faculty Main Page</title>
+    <link rel="stylesheet" href={% static "vendors/simple-line-icons/css/simple-line-icons.css" %}>
+    <link rel="stylesheet" href={% static "vendors/flag-icon-css/css/flag-icon.min.css" %}>
+    <link rel="stylesheet" href={% static "vendors/css/vendor.bundle.base.css" %}>
+    <link rel="stylesheet" href={% static "./vendors/daterangepicker/daterangepicker.css" %}>
+    <link rel="stylesheet" href={% static "./vendors/chartist/chartist.min.css" %}>
+    <link rel="stylesheet" href={% static "./css/style.css" %}>
+    <link rel="shortcut icon" href={% static "./images/favicon.png" %} />
+  </head>
+
+  <body>
+    <div class="container-scroller">
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex align-items-center">
+          <a class="navbar-brand brand-logo" href="index.html">
+            <h2 style="color: white">MITM</h2>
+          </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
+          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Leave Application</h5>
+          <ul class="navbar-nav navbar-nav-right ml-auto">
+            
+            <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
+                <div class="preview"> <i class="icon-user"></i>
+                </div> <a class="dropdown-item" href="/log-out"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <div class="container-fluid page-body-wrapper"> 
+
+  
+{% block content %}{% endblock content %}
+            </div>
+          </div>
+        </div>
+
+      </body>
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Maharaja Institute of Technology Mysore</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Employee leave management</span>
+      </div>
+    </footer>
+
+  </div>
+</div>
+</div>
+<script src={% static "vendors/js/vendor.bundle.base.js" %}></script>
+<script src={% static "./vendors/chart.js/Chart.min.js" %}></script>
+<script src={% static "./vendors/moment/moment.min.js" %}></script>
+<script src={% static "./vendors/daterangepicker/daterangepicker.js" %}></script>
+<script src={% static "./vendors/chartist/chartist.min.js" %}></script>
+<script src={% static "js/off-canvas.js" %}></script>
+<script src={% static "js/misc.js" %}></script>
+<script src={% static "./js/dashboard.js" %}></script>
+</body>
+</html>

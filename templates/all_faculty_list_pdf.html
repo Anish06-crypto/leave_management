@@ -1,0 +1,48 @@
+
+
+<div class="main-panel">
+  <div class="content">
+					<div class="container-fluid">
+						<h4 class="page-title">Faculty Submitted List</h4>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="card card-stats card-success">
+								</div>
+							</div>
+
+<div class="card-body">
+<div style="overflow-x:auto;">
+	<table class="table table-head-bg-primary table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Staff ID</th>
+      <th scope="col">Casual Leaves</th>
+      <th scope="col">Special Casual Leaves</th>
+      <th scope="col">OOD</th>
+      <th scope="col">HOD Approval Status</th>
+      <th scope="col">Principal Approval Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for t in tle %}
+        <tr>
+          <td scope="col">{{ t.name }}</td>
+          <td scope="col">{{ t.designation }}</td>
+          <td scope="col">{{ t.user }}</td>
+          <td scope="col">{{ t.cl }}</td>
+          <td scope="col">{{ t.scl }}</td>
+          <td scope="col">{{ t.ood }}</td>
+          <td scope="col">{{ t.Hod_approval }}</td>
+          <td scope="col">{{ t.Principal_approval }}</td>
+        </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+    

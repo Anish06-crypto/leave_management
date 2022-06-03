@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    
+     <li class="nav-item">
+      <a class="nav-link" href="/leaves/apply_leave_hod">
+        <span class="menu-title">Apply Full Leave</span>
+        <i class="icon-globe menu-icon"></i>
+      </a>
+    </li>
+    {% if clcount < 12.0  %}
+    <li class="nav-item">
+      <a class="nav-link" href="/leaves/apply_leave_hod_half">
+        <span class="menu-title">Apply Half Leave</span>
+        <i class="icon-globe menu-icon"></i>
+      </a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+      <a class="nav-link" href="/my_leaves">
+        <span class="menu-title">Status</span>
+        <i class="icon-globe menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/staff">
+        <span class="menu-title">Faculty Leaves</span>
+        <i class="icon-globe menu-icon"></i>
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+
+<div class="main-panel">
+  <div class="content-wrapper">
+    
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Leave Status</h4>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Designation</th>
+                  <th scope="col">Staff ID</th>
+                  <th scope="col">Leave Type</th>
+                  <th scope="col">Approval Status(Principal)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for t in tle %}
+                  {% if hod.Staff_ID == t.user %}
+                      <tr>
+                        <td>{{ t.name }}</td>
+                        <td>{{ t.designation }}</td>
+                        <td>{{ t.user }}</td>
+                        <td>{{ t.Leave_type }}</td>
+                        <td>{{ t.Principal_approval }}</td>
+                      </tr>
+                {% endif %}
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Half Day Leave Status</h4>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">Principal Approval</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for t in ole %}
+                    {% if hod.Staff_ID == t.user %}
+                        <tr>
+                          <td>{{ t.name }}</td>
+                          <td>{{ t.designation }}</td>
+                          <td>{{ t.Time }}</td>
+                          <td>{{ t.user }}</td>
+                          <td>{{ t.Principal_approval }}</td>
+                        </tr>
+                  {% endif %}
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="row">
+            <h5 class="card-title col-sm-6 col-md-4 p-3 text-left" style="text-align: left;"> OOD Leaves : <b>{{ oodcount }}</b></h5>
+                  <h5 class="card-title col-sm-6 col-md-4 p-3 text-left"  style="text-align: right;"> Casual Leaves Applied: <b>{{ clcount }}</b></h5>
+                  <h5 class="card-title col-sm-6 col-md-4 p-3 text-left"  style="text-align: center;"> Special Casual Leaves Applied: <b>{{ sclcount }}</b></h5>
+          
+                </div>
+                </div>
+        </div>
+      </div>
+    
+{% endblock content %}

@@ -1,0 +1,65 @@
+
+{% load static %}
+
+{% block style %}
+
+<script>
+
+            $('#file-upload').change(function() {
+                var i = $(this).prev('label').clone();
+                var file = $('#file-upload')[0].files[0].name;
+                $(this).prev('label').text(file);
+            });
+
+</script>
+
+<style>
+
+          .custom-file-upload {
+                  border: 1px solid #ccc;
+                  display: inline-block;
+                  padding: 6px 12px;
+                  cursor: pointer;
+              }
+</style>
+
+
+{% endblock style %}
+
+
+
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+
+<div class="main-panel">
+	<div class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<div style="padding: 220px; padding-left: 300px; padding-bottom: 0px;">
+						<div class="form-group">
+							<label for="file-upload" class="custom-file-upload">
+                                <i class="fa fa-cloud-upload"></i>Upload to Register Faculty</label>
+							<input type="file" id="file-upload" name="myfile" style="display:none">
+												
+						        </div>
+						    <div class="form-group">	
+								<div class="card-action" >
+                                    <button class="btn btn-success" id="btnsubmit" type="submit" >Submit</button><br><br>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
